@@ -26,7 +26,7 @@ export const darkTheme = {
   bodyColor: "#0F0F0F",
   fontColor: "#F8F8F8",
   headerColor: "#1F1F1F",
-  asideColor: "#151515",
+  asideColor: "#1B1B1B",
   inputColor : '#151515'
             
 };

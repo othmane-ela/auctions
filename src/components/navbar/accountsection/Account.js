@@ -1,5 +1,5 @@
 import Styled from 'styled-components'
-
+import Button from '../../tools/Button';
 
 const AccountSection = Styled.div`
             flex : 15%;
@@ -10,6 +10,9 @@ const AccountSection = Styled.div`
 
 export default function Account() {
     return <AccountSection>
-        <div>Account</div>
-     </AccountSection>
+            <div className="notlogged">
+                <Button type="btn-white">Sign in</Button>
+                <Button type="btn-primary" >Sign up</Button>
+            </div>
+        </AccountSection>
 }

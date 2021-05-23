@@ -2,7 +2,7 @@ import React from 'react'
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyles } from "../../../themesConfig";
 import Styled from 'styled-components';
-
+import Button from '../../tools/Button';
 
 const Switcher = Styled.div`
             flex: 15%;
@@ -48,7 +48,7 @@ class ThemeSwitcher extends React.Component{
                         <ThemeProvider theme={this.state.theme === "light" ? lightTheme : darkTheme}>
                         <GlobalStyles/>
                         </ThemeProvider>
-                        <button onClick={this.themeToggler}>Switch</button>
+                          <Button onClick={this.themeToggler}>Switch</Button>
                       </Switcher>
                   
     }

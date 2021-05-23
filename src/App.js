@@ -12,7 +12,7 @@ const Grid = styled.div`
   box-sizing : border-box;
   display:grid;
   grid-template-columns : 15% auto 5%;
-  grid-template-rows: 60px 93vh;
+  grid-template-rows: 72px 93vh;
   grid-template-areas: "head head head"
  "left middle right"
 `;
