@@ -1,13 +1,12 @@
 .btn{
-    padding: 10px 15px;
-    margin: 10px;
+    padding: 1em 1em;
     border : 0;
-    border-radius: 3px;
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
     cursor: pointer;
     font-weight: 500;
     font-weight: 700;
     background-color: transparent;
+    border-radius: 5px;
 }
 
 
@@ -49,7 +48,7 @@
         color: #000;
 
       &:hover{
-        background-color: rgb(223, 223, 223);
+        background-color: rgb(221, 221, 221);
         transition: 0.2s;
     }
 
@@ -57,4 +56,24 @@
         background-color: #FFF;
         color: #000;
     }
+}
+
+.btn-dark{
+       background-color: rgb(41, 41, 41);
+        color: #FFF;
+
+      &:hover{
+        background-color: rgb(12, 12, 12);
+        transition: 0.4s;
+    }
+
+    &:active{
+        background-color:  rgb(41, 41, 41);
+         color: #FFF;
+    }
+}
+
+
+.tool-margin{
+    margin: 0.5em 0.5em;
 }

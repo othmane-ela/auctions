@@ -10,6 +10,6 @@ const LogoSection = Styled.div`
 
 export default function Logo() {
     return <LogoSection>
-        <div className="logo-typography"><span>Auctions</span><span>Now</span></div>
+        <div className="logo-typography tool-margin"><span>Auctions</span><span>Now</span></div>
      </LogoSection>
 }

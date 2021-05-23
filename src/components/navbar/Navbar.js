@@ -18,7 +18,6 @@ const Nav = Styled.nav`
 `;
 
 export default function Navbar() {
-
     return <Nav>
                 <Logo />
                 <Links />
@@ -26,6 +25,5 @@ export default function Navbar() {
                 <Account/>
                 <ThemeSwitcher/>
             </Nav>
-
 }
  

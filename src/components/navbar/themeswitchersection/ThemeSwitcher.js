@@ -3,6 +3,8 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyles } from "../../../themesConfig";
 import Styled from 'styled-components';
 import Button from '../../tools/Button';
+import { FiSun,FiMoon } from "react-icons/fi";
+
 
 const Switcher = Styled.div`
             flex: 15%;
@@ -44,15 +46,32 @@ class ThemeSwitcher extends React.Component{
     }
 
     render() {
+
+        const theme = this.state.theme;
+
+
         return       <Switcher>
-                        <ThemeProvider theme={this.state.theme === "light" ? lightTheme : darkTheme}>
+                        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
                         <GlobalStyles/>
-                        </ThemeProvider>
-                          <Button onClick={this.themeToggler}>Switch</Button>
+                         </ThemeProvider>
+                        <div className="tool-margin">  {
+                                    theme === "light" ?
+                                    (<Button onClick={this.themeToggler} type="btn-zhite"><FiMoon size="1.5em" /></Button>) :
+                                    (<Button onClick={this.themeToggler} type="btn-dark" ><FiSun size="1.5em" /></Button>)
+                        }
+                        </div>
+                           
                       </Switcher>
-                  
     }
 }
 
 
 export default ThemeSwitcher;
+
+/*
+
+ {
+         theme==="light" ? <FiMoon size="1.5em" />  : <FiSun color="#FFF" size="1.5em"/>
+                                   }
+
+                                   */
