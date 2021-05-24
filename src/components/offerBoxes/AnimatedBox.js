@@ -1,6 +1,4 @@
 import './AnimatedBox.scss'
-
-
 export default function AnimatedBox({productImage,owner,title,children}) {
     return  <div className="magic-card text-center">
                                     <img src={productImage} alt={owner} className="magic-card__image"/>
