@@ -25,9 +25,9 @@ function App() {
           <Grid>
                 <Navbar />
                 <LeftSide />
-               <Switch>
-                    <Route path="/" exact component={NotFound} />
-              </Switch>
+                  <Switch>
+                        <Route path="/" exact component={NotFound} />
+                  </Switch>
               <RightSide />
       </Grid>
     </Router>
@@ -36,8 +36,7 @@ function App() {
 }
 
 export default App;
-
-
-/* <Route path="/" exact component={Home}/>
+/* 
+<Route path="/" exact component={Home}/>
 <Route path="/subscriptions" exact component={Subscriptions} />
 */

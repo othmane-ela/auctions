@@ -3,6 +3,9 @@ import './LeftSide.scss'
 import Styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
+import ConnectedList from '../leftside/ConnetectedList/ConnectedListe';
+import DisconnectedList from '../leftside/ConnetectedList/ConnectedListe';
+
 
 const LeftAside = Styled.aside`
     grid-area: left;
@@ -14,7 +17,13 @@ const LeftAside = Styled.aside`
 
 export default function LeftSide() {
     return <LeftAside>
-                 <ul className="ul-links">
+                    <ConnectedList />
+                    <DisconnectedList/>
+            </LeftAside>
+}
+
+/* 
+  <ul className="ul-links">
                     <li>
                         <NavLink exact  to="/" className="link">Market</NavLink>
                     </li>
@@ -35,6 +44,5 @@ export default function LeftSide() {
                             </li>
                   
                      <li>  <NavLink exact to="/subscriptions" className="link">Sellers</NavLink> </li>
-               </ul>
-            </LeftAside>
-}
+               </ul
+*/
