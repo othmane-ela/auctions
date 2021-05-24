@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Home from './pages/home/Home'
 import Subscriptions from './pages/subscriptions/Subscriptions'
-
+import NotFound from './notFound';
 
 const Grid = styled.div`
   padding : 0;
@@ -25,9 +25,10 @@ function App() {
           <Grid>
                 <Navbar />
                 <LeftSide />
-                <Switch>
+        <Switch>
                            <Route path="/" exact component={Home}/>
                             <Route path="/subscriptions" exact component={Subscriptions} />
+                            <Route path="/*" exact component={NotFound} />
               </Switch>
               <RightSide />
       </Grid>
