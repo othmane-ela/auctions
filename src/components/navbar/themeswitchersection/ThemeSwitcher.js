@@ -16,14 +16,12 @@ const Switcher = Styled.div`
 class ThemeSwitcher extends React.Component{
 
     constructor(props) {
-            
-            super(props);
+        super(props);
             this.state = {
                 theme : 'light'
             }
-            this.themeToggler = this.themeToggler.bind(this);
-    }
-
+                this.themeToggler = this.themeToggler.bind(this);
+            }
 
     componentDidMount() {
         const currentTheme = localStorage.getItem('activeTheme') ?  localStorage.getItem('activeTheme') : 'light'
@@ -33,8 +31,7 @@ class ThemeSwitcher extends React.Component{
     }
 
 
-    themeToggler() {
-    
+    themeToggler() {    
         if (this.state.theme === "light") {
             this.setState({ theme: 'dark' });
             localStorage.setItem('activeTheme', 'dark');
@@ -46,10 +43,7 @@ class ThemeSwitcher extends React.Component{
     }
 
     render() {
-
         const theme = this.state.theme;
-
-
         return       <Switcher>
                         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
                         <GlobalStyles/>
@@ -67,11 +61,3 @@ class ThemeSwitcher extends React.Component{
 
 
 export default ThemeSwitcher;
-
-/*
-
- {
-         theme==="light" ? <FiMoon size="1.5em" />  : <FiSun color="#FFF" size="1.5em"/>
-                                   }
-
-                                   */

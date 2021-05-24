@@ -1,9 +1,10 @@
 import Navbar from './components/navbar/Navbar'
 import LeftSide from './components/leftside/LeftSide'
-import Content from './components/content/Content'
 import RightSide from './components/rightside/RightSide'
 import styled from 'styled-components'
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
+import Home from './pages/home/Home'
+import Subscriptions from './pages/subscriptions/Subscriptions'
 
 
 const Grid = styled.div`
@@ -11,7 +12,7 @@ const Grid = styled.div`
   margin : 0;
   box-sizing : border-box;
   display:grid;
-  grid-template-columns : 20% auto 10%;
+  grid-template-columns : 20% auto 5%;
   grid-template-rows: 72px 93vh;
   grid-template-areas: "head head head"
  "left middle right"
@@ -21,17 +22,15 @@ const Grid = styled.div`
 function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
-             <Switch>
-                <Route path="/">
-                            <Grid>
-                              <Navbar/>
-                              <LeftSide />
-                              <Content />
-                              <RightSide />
-                            </Grid>
-                    </Route>
-                    <Route path="/subscriptions" /> 
-              </Switch> 
+          <Grid>
+                <Navbar />
+                <LeftSide />
+                <Switch>
+                           <Route path="/" exact component={Home}/>
+                            <Route path="/subscriptions" exact component={Subscriptions} />
+              </Switch>
+              <RightSide />
+      </Grid>
     </Router>
 
   );

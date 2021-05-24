@@ -48,7 +48,7 @@ export const GlobalStyles = createGlobalStyle`
     
     // NAVBAR
     nav{
-      	background-color: ${(props) => props.theme.headerColor };
+      	  background-color: ${(props) => props.theme.headerColor };
     }
 
     // SIDES BARES
