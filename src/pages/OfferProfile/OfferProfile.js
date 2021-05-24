@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import moment from "moment";
 import Loading from "../../components/Loader";
 import Carousel from "../../components/Carousel";
-import "./GameProfile.scss";
+import "./OfferProfile.scss";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      gameName: "",
-      gameRawName: "",
+      offerName: "",
+      offerName: "",
       liveStreams: [],
       mostViewedStreams: [],
       waitingForResponse: true,
@@ -18,29 +17,29 @@ class Profile extends Component {
     };
   }
 
-  getGameDataFromTwitch = async () => {
+  getofferDataFromTwitch = async () => {
     let waitingForResponse;
 
-    // Gets the raw name of the game
-    let gameRawName =
+    // Gets the raw name of the offer
+    let offerRawName =
       this.props && this.props.location && this.props.location.props
-        ? this.props.location.props.gameName
+        ? this.props.location.props.offerName
         : this.props.location.pathname.match(/[^/]+$/)[0];
 
-    // Makes the gameRawName compatible with API search.
-    let gameName = gameRawName.replace(/&|\+/g, match => {
+    // Makes the offerRawName compatible with API search.
+    let offerName = offerRawName.replace(/&|\+/g, match => {
       return match == "&" ? "%26" : match == "+" ? "%2B" : "";
     });
 
-    this.setState({ gameName, gameRawName });
+    this.setState({ offerName, offerRawName });
 
     try {
-      let liveStreams = await GetGameStreams(gameName);
+      let liveStreams = await GetofferStreams(offerName);
       liveStreams.length == 0
         ? (waitingForResponse = false)
         : (waitingForResponse = true);
 
-      let mostViewedStreams = await GetGameViewedStreams(gameName);
+      let mostViewedStreams = await GetofferViewedStreams(offerName);
       this.setState({ liveStreams, mostViewedStreams, waitingForResponse });
     } catch (error) {
       this.setState({ error: "error" });
@@ -50,19 +49,19 @@ class Profile extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.getGameDataFromTwitch();
+    this.getofferDataFromTwitch();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
-      this.getGameDataFromTwitch();
+      this.getofferDataFromTwitch();
     }
   }
 
   render() {
     const {
-      gameName,
-      gameRawName,
+      offerName,
+      offerRawName,
       liveStreams,
       mostViewedStreams,
       waitingForResponse,
@@ -77,19 +76,19 @@ class Profile extends Component {
       );
     }
 
-    let coverArt = `https://static-cdn.jtvnw.net/ttv-boxart/./${gameName}-272x380.jpg`;
+    let coverArt = `https://static-cdn.jtvnw.net/ttv-boxart/./${offerName}-272x380.jpg`;
 
-    const gameCard = gameName ? (
-      <div className="game-topContainer">
-        <div className="game-logoContainer">
-          <div className="game-gameLogo">
+    const offerCard = offerName ? (
+      <div className="offer-topContainer">
+        <div className="offer-logoContainer">
+          <div className="offer-offerLogo">
             <img src={coverArt} alt="" />
           </div>
         </div>
-        <div className="game-carouselCard">
+        <div className="offer-carouselCard">
           <Carousel
-            name={gameRawName}
-            clipQuery={`clips/top?game=${gameName}`}
+            name={offerRawName}
+            clipQuery={`clips/top?offer=${offerName}`}
           />
         </div>
       </div>
@@ -98,13 +97,13 @@ class Profile extends Component {
     );
 
     const title_liveStreams = (
-      <h4 className="game-partTitle" style={{ marginTop: "50px" }}>
+      <h4 className="offer-partTitle" style={{ marginTop: "50px" }}>
         Top Live Streams
       </h4>
     );
 
     const title_MostViewedStreams = (
-      <h4 className="game-partTitle" style={{ marginTop: "20px" }}>
+      <h4 className="offer-partTitle" style={{ marginTop: "20px" }}>
         Most Viewed Streams
       </h4>
     );
@@ -127,7 +126,7 @@ class Profile extends Component {
     ) : waitingForResponse ? (
       <Loading />
     ) : (
-      <h4>Seems like nobody is streaming {gameName}</h4>
+      <h4>Seems like nobody is streaming {offerName}</h4>
     );
 
     const mostViewedVideosList = mostViewedStreams.length ? (
@@ -138,7 +137,7 @@ class Profile extends Component {
             url={stream.url}
             imgURL={stream.preview.medium}
             title={stream.title}
-            gameName={stream.channel.display_name}
+            offerName={stream.channel.display_name}
             routeParam={"/channel/" + stream.channel._id}
             views={stream.views}
             streamRecordTime={stream.recorded_at}
@@ -148,20 +147,20 @@ class Profile extends Component {
     ) : waitingForResponse ? (
       <Loading />
     ) : (
-      <h4>No videos found of {gameName}</h4>
+      <h4>No videos found of {offerName}</h4>
     );
 
     return (
       <div>
-        {gameCard}
+        {offerCard}
         {title_liveStreams}
-        <div className="game-streamContainer" style={{ marginTop: "100px" }}>
+        <div className="offer-streamContainer" style={{ marginTop: "100px" }}>
           {renderLiveStreams}
         </div>
 
         <div>{title_MostViewedStreams}</div>
         <div
-          className="game-streamContainer"
+          className="offer-streamContainer"
           style={{ marginTop: "100px", marginBottom: "20px" }}
         >
           {mostViewedVideosList}
